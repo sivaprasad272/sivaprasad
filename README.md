@@ -13,7 +13,7 @@ Creating an IAM user in AWS involves several steps. Here is a detailed explanati
 5. Select the access type: You can choose between two types of access: AWS Management Console access and/or programmatic access.
 
 6. Assign permissions: You can assign one or more policies to the user that determine what actions the user is allowed to perform on AWS resources.
-![IAM Management console!](https://github.com/sivaprasad272/githubpages/blob/master/IAM%20Management%20Console%20-%20Google%20Chrome%201_23_2023%205_20_48%20PM.png?raw=true0
+![IAM Management console!](https://github.com/sivaprasad272/githubpages/blob/master/IAM%20Management%20Console%20-%20Google%20Chrome%201_23_2023%205_20_48%20PM.png?raw=true0)
 7. Review and create the user: Review the information you have entered and click the Create user button to create your new IAM user.
 
 Once the user is created, you can download the credentials, that consist of an access key ID and a secret access key.
