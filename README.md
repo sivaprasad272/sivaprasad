@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Resume - Shiva</title>
+  <title>Sivaprasad</title>
   <style>
     body {
       font-family: Arial, sans-serif;
