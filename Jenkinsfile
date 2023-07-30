@@ -14,7 +14,7 @@ pipeline {
                 
                 // Load global credentials of type "Secret Text" with ID 'aws-secret-key'
                 withCredentials([
-                    string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_KEY')
+                    string(credentialsId: 'aws-secret_key', variable: 'AWS_SECRET_KEY')
                 ]) {
                     // Use the loaded AWS_SECRET_KEY in a step
                     sh "echo \$AWS_SECRET_KEY"
