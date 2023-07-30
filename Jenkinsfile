@@ -8,8 +8,9 @@ pipeline {
                 sh "ls -la"
                 sh "rm -rf sivaprasad"
                 sh "git clone https://github.com/sivaprasad272/sivaprasad.git"
-                sh "export AWS_ACCESS_KEY='$aws-access-key'"
-                sh "export AWS_SECRET_KEY='$aws-secret-key'"
+                sh "export AWS_ACCESS_KEY=\"$aws-access-key\""
+                sh "export AWS_SECRET_KEY=\"$aws-secret-key\""
+
                 }
             }
         }
