@@ -11,6 +11,8 @@ pipeline {
                 sh "git status"
                 sh "ls -la"
                 sh "git clone https://github.com/sivaprasad272/s3demo.git"
+                sh "export AWS_ACCESS_KEY='$aws-access-key'"
+                sh "export AWS_SECRET_KEY='$aws-secret-key'"
             }
         }
         stage('check aws profile') {
