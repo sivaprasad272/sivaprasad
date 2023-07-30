@@ -23,8 +23,8 @@ pipeline {
                         sh "aws configure list"
                         sh "aws configure set aws_access_key_id \$AWS_ACCESS_KEY"
                         sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
-                        sh "aws configure set default.region ap-south-1 // Replace with your desired default region"
-                        sh "aws configure set default.output json // Replace with your desired output format"
+                        sh "aws configure set default.region ap-south-1"
+                        sh "aws configure set default.output json"
                         sh "aws s3 cp \$WORKSPACE/index.html s3://kulfibucket/"
                     }
                 }
