@@ -52,7 +52,7 @@ pipeline {
                     // Load AWS access credentials from Jenkins credentials and set as environment variables
                     withCredentials([
                         string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY'),
-                        string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_KEY')
+                        string(credentialsId: 'aws-secret_key', variable: 'AWS_SECRET_KEY')
                     ]) {
                         sh "aws --version"
                         sh "aws configure list"
