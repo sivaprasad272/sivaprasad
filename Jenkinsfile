@@ -21,7 +21,6 @@ pipeline {
                     ]) {
                         sh "aws --version"
                         sh "aws configure list"
-                        sh "aws configure --profile"
                         sh "aws configure set aws_access_key_id \$AWS_ACCESS_KEY"
                         sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
                         sh "aws configure set default.region ap-south-1 // Replace with your desired default region"
