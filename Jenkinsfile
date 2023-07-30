@@ -40,7 +40,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    sh "git status"
+                    sh "rm -rf s3demo"
                     sh "ls -la"
                     sh "git clone https://github.com/sivaprasad272/s3demo.git"
                 }
