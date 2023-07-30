@@ -56,7 +56,7 @@ pipeline {
                     ]) {
                         sh "aws --version"
                         sh "aws configure list"
-                        
+                        '''
                         // Prompt user for AWS region and output format
                         def awsRegion = input(message: 'Enter AWS region (e.g., ap-south-1): ', parameters: [string(defaultValue: 'ap-south-1', description: 'AWS region', name: 'AWS_REGION')])
                         def awsOutput = input(message: 'Enter AWS output format (e.g., json): ', parameters: [string(defaultValue: 'json', description: 'Output format', name: 'AWS_OUTPUT')])
@@ -65,7 +65,7 @@ pipeline {
                         sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
                         sh "aws configure set default.region \$AwsRegion"
                         sh "aws configure set default.output \$AwsOutput"
-                        sh "aws s3 cp \$WORKSPACE/index.html s3://kulfibucket/"
+                        sh "aws s3 cp \$WORKSPACE/index.html s3://kulfibucket/" '''
                     }
                 }
             }
