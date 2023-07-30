@@ -3,7 +3,7 @@ pipeline {
     environment{
         AWS-ACCESS-KEY='aws-access-key'
         AWS-SECRET-KEY='aws-secret-key'
-
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -17,8 +17,8 @@ pipeline {
                 script{
                     sh "echo $AWS-ACCESS-KEY"
                     sh "echo $AWS-SECRET-KEY"
+                    }
                 }
-            }
-        }
-    }
+           }
+     }
 }
