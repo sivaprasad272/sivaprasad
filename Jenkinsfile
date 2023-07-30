@@ -2,22 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Example Stage') {
+        stage('Checkout') {
             steps {
-                // Load global credentials of type "Secret Text" with ID 'aws-access-key'
-                withCredentials([
-                    string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY')
-                ]) {
-                    // Use the loaded AWS_ACCESS_KEY in a step
-                    sh "echo \$AWS_ACCESS_KEY"
+                script {
+                    sh "git status"
+                    sh "ls -la"
+                    sh "git clone https://github.com/sivaprasad272/s3demo.git"
                 }
-                
-                // Load global credentials of type "Secret Text" with ID 'aws-secret-key'
-                withCredentials([
-                    string(credentialsId: 'aws-secret_key', variable: 'AWS_SECRET_KEY')
-                ]) {
-                    // Use the loaded AWS_SECRET_KEY in a step
-                    sh "echo \$AWS_SECRET_KEY"
+            }
+        }
+        stage('AWS Tasks') {
+            steps {
+                script {
+                    // Load AWS access credentials from Jenkins credentials and set as environment variables
+                    withCredentials([
+                        string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY'),
+                        string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_KEY')
+                    ]) {
+                        sh "aws --version"
+                        sh "aws configure list"
+                        sh "aws configure --profile"
+                        sh "aws configure set aws_access_key_id \$AWS_ACCESS_KEY"
+                        sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
+                        sh "aws configure set default.region us-west-2 // Replace with your desired default region"
+                        sh "aws configure set default.output json // Replace with your desired output format"
+                        sh "aws s3 cp \$WORKSPACE/index.html s3://kulfibucket/"
+                    }
                 }
             }
         }
