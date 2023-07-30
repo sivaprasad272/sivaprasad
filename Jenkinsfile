@@ -1,24 +1,31 @@
 pipeline {
     agent any
-    environment{
-        export AWS_ACCESS_KEY=$aws-access-key
-        export AWS_SECRET_KEY=$aws-secret-key
+    environment {
+        // Use the credentials you've created in Jenkins
+        AWS_ACCESS_KEY = credentials('aws-access-key')
+        AWS_SECRET_KEY = credentials('aws-secret-key')
     }
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
                 sh "git status"
                 sh "ls -la"
-                sh "git clone https://github.com/sivaprasad272/sivaprasad.git"
+                sh "git clone https://github.com/sivaprasad272/s3demo.git"
             }
         }
-        stage('Check AWS Profile') {
+        stage('check aws profile') {
             steps {
-                script{
-                    sh "echo $AWS-ACCESS-KEY"
-                    sh "echo $AWS-SECRET-KEY"
-                    }
+                script {
+                    sh "aws --version"
+                    sh "aws configure list"
+                    sh "aws configure --profile"
+                    sh "aws configure set aws_access_key_id \$AWS_ACCESS_KEY"
+                    sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
+                    sh "aws configure set default.region us-west-2 // Replace with your desired default region"
+                    sh "aws configure set default.output json // Replace with your desired output format"
+                    sh "aws s3 cp \$WORKSPACE/index.html s3://kulfibucket/"
                 }
-           }
-     }
+            }
+        }
+    }
 }
