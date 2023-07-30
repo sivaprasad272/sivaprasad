@@ -56,7 +56,6 @@ pipeline {
                     ]) {
                         sh "aws --version"
                         sh "aws configure list"
-                        sh "aws configure --profile"
                         
                         // Prompt user for AWS region and output format
                         def awsRegion = input(message: 'Enter AWS region (e.g., ap-south-1): ', parameters: [string(defaultValue: 'ap-south-1', description: 'AWS region', name: 'AWS_REGION')])
