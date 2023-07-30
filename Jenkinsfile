@@ -62,8 +62,8 @@ pipeline {
 
                         sh "aws configure set aws_access_key_id \$AWS_ACCESS_KEY"
                         sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
-                        sh "aws configure set region \$awsRegion"
-                        sh "aws configure set output \$awsOutput"
+                        sh "aws configure set default.region \$awsRegion"
+                        sh "aws configure set default.output \$awsOutput"
                         sh "aws s3 cp \$WORKSPACE/index.html s3://kulfibucket/" 
                     }
                 }
