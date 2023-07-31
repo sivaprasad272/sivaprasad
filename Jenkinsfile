@@ -22,11 +22,6 @@ pipeline {
                         // Display AWS CLI version and configuration for verification
                         sh "aws --version"
                         sh "aws configure list"
-
-                        // Set AWS region and output format as environment variables
-                        env.AWS_REGION = "${params.AWS_REGION}"
-                        env.AWS_OUTPUT = "${params.AWS_OUTPUT}"
-
                         // Use environment variables for AWS CLI commands
                         sh "aws configure set aws_access_key_id \$AWS_ACCESS_KEY"
                         sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
