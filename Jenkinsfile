@@ -18,7 +18,7 @@ pipeline {
                     withCredentials([
                         string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY'),
                         string(credentialsId: 'aws-secret_key', variable: 'AWS_SECRET_KEY')
-                    ]) {    
+                    ]) 
                     input(message: 'Enter AWS region (e.g., ap-south-1): ', parameters: [
                         string(defaultValue: 'ap-south-1', description: 'AWS region', name: 'AWS_REGION')
                     ])
@@ -33,9 +33,8 @@ pipeline {
                         sh "aws configure set default.region \${AWS_REGION}"
                         sh "aws configure set default.output \$AWS_OUTPUT" // Corrected variable name here
                         sh "aws s3 cp \$WORKSPACE/index.html s3://kulfibucket/" 
-                        }
                     }
                 }
-            }
-        }
-    }
+          }
+      }
+ }
