@@ -34,8 +34,8 @@ pipeline {
                         // Configure AWS CLI using provided credentials and inputs
                         sh "aws configure set aws_access_key_id \$AWS_ACCESS_KEY"
                         sh "aws configure set aws_secret_access_key \$AWS_SECRET_KEY"
-                        sh "aws configure set default.region \${AWS_REGION}"
-                        sh "aws configure set default.output \${AWS_OUTPUT}"
+                        sh "aws configure set region \${AWS_REGION}"
+                        sh "aws configure set output \${AWS_OUTPUT}"
                         
                         // Copy 'index.html' to S3 bucket
                         sh "aws s3 cp \$WORKSPACE/s3demo/index.html s3://kulfibucket/"
