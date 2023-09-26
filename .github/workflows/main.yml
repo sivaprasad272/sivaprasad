@@ -1,2 +1,32 @@
-on: push
-runs-on: self-hosted
+name: Self-Hosted Runner Setup
+
+on:
+  workflow_run:
+    workflows: ["Configure Self-Hosted Runner"]
+    types:
+      - completed
+
+jobs:
+  self_hosted_runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Configure Self-Hosted Runner
+        run: |
+          # Replace with the URL of your self-hosted runner registration script.
+          RUNNER_SCRIPT_URL="https://github.com/username/repository/runner-registration-script.sh"
+
+          # Replace with the registration token generated on GitHub.
+          REGISTRATION_TOKEN="your-registration-token"
+
+          # Download and execute the runner registration script.
+          curl -o runner-registration-script.sh $RUNNER_SCRIPT_URL
+          chmod +x runner-registration-script.sh
+          ./runner-registration-script.sh --token $REGISTRATION_TOKEN --url https://github.com/username/repository
+
+          # Start the runner as a background process.
+          ./run.sh &
+
+        # This step will set up the self-hosted runner and start it.
