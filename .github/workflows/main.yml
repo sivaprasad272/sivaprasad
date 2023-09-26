@@ -1,2 +1,2 @@
-
+on: push
 runs-on: self-hosted
